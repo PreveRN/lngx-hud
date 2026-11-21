@@ -30,4 +30,10 @@ A modern, customizable, and lightweight HUD system designed for an immersive gam
 | `/seatbelt` | <kbd>B</kbd> | Toggle vehicle seatbelt |
 | `/cruise` | <kbd>CAPSLOCK</kbd> | Limit Km/h  |
 
+## SUPPORTED FRAMEWORKS
+
+* **ESX** (`es_extended`)
+* **QBCore** (`qb-core`)
+* **Qbox** (`qbx_core`)
+
 
