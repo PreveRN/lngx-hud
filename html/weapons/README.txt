@@ -1,6 +1,6 @@
-Taruh PNG senjata di folder ini.
-Nama file = nama spawn senjata, huruf kecil:
-  weapon_pistol.png, weapon_carbinerifle.png, weapon_knife.png, dst.
-Senjata addon: pakai nama yang sama dengan di Config.Weapon.Names (mis. weapon_xxx.png).
-Disarankan PNG transparan, ~256x112 px, senjata menghadap kiri/kanan sama untuk semua.
-Jika PNG tidak ada, otomatis pakai ikon SVG.
+Place weapon PNGs in this folder.
+File name = weapon spawn name, in lowercase:
+  weapon_pistol.png, weapon_carbinerifle.png, weapon_knife.png, etc.
+For addon weapons, use the same name as defined in Config.Weapon.Names (e.g., weapon_xxx.png).
+Transparent PNGs are recommended, approximately 256x112 px; ensure all weapon images face the same direction (left or right).
+If a PNG is missing, an SVG icon will be used automatically.
