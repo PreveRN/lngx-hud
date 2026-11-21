@@ -1,9 +1,8 @@
 Config = {}
 
--- ============ FRAMEWORK ============
--- 'auto' (deteksi otomatis) | 'esx' | 'qb' | 'qbox' | 'standalone'
+ 
 Config.Framework = 'auto'
--- Nama resource framework (ubah kalau resource kamu di-rename, mis. ESX -> 'ac-core')
+ 
 Config.Resources = {
     esx  = 'es_extended',
     qb   = 'qb-core',
@@ -11,142 +10,123 @@ Config.Resources = {
 }
 
 -- ============ MINIMAP ============
-Config.MapShape = 'square'        -- 'square' atau 'circle'
-Config.OnlyInVehicle = false      -- true = minimap hanya muncul saat di kendaraan
-Config.HideWhenPaused = true      -- sembunyikan HUD saat pause menu dibuka
-Config.Zoom = 1000                -- zoom radar
--- Geser minimap ke atas agar ada jarak dengan dock (negatif = naik, mis. -0.015 = ~16px di 1080p; 0 = posisi asli)
-Config.MapOffsetY = -0.005   -- fraksi tinggi layar, jadi otomatis pas di semua resolusi
-Config.HideMapBlips = true        -- sembunyikan semua item/blip di minimap (tetap tampil di peta pause)
-Config.HidePlayerBlip = false     -- true = ikon posisi pemain di minimap juga disembunyikan
-Config.MapShapeCommand = 'mapshape' -- /mapshape square|circle  (nil/false = matikan command)
+Config.MapShape = 'square'         
+Config.OnlyInVehicle = false       
+Config.HideWhenPaused = true      
+Config.Zoom = 1000                 
+Config.MapOffsetY = -0.005    
+Config.HideMapBlips = true         
+Config.HidePlayerBlip = false      
+Config.MapShapeCommand = 'mapshape'  
 
 -- ============ NOTIFIKASI ============
--- 'auto' (ox_lib -> ESX -> QBCore/Qbox -> native GTA) | 'ox' | 'esx' | 'qb' | 'qbox' | 'native' | 'custom'
--- 'custom' = isi sendiri di LNGX.customNotify (client/bridge.lua)
 Config.Notify = 'auto'
-Config.NotifyDuration = 3000      -- ms (ox_lib / QBCore)
+Config.NotifyDuration = 3000      
 
 -- ============ HUD ============
--- Posisi dock status (px, acuan layar 1080p, otomatis diskalakan). Dock berada DI BAWAH minimap.
--- left = jarak dari kiri layar, bottom = jarak dari bawah layar
 Config.HudPosition = {
     square = { left = 26, bottom = 12 },
     circle = { left = 42, bottom = 12 },
 }
-Config.SettingsCommand = 'hud'    -- /hud membuka menu pengaturan HUD (nil/false = matikan). Nilai config lain di bawah menjadi DEFAULT; pilihan pemain disimpan per-pemain
+Config.SettingsCommand = 'hud'    -
 
--- ============ BRAND SERVER (nama + logo) ============
--- Tampil sebagai pil kecil di pojok layar. Logo = file di folder html/ (png/webp/svg). Ganti html/logo.svg dengan logo servermu
--- (atau ubah Logo = 'logo.png' lalu taruh file-nya di html/). Logo = '' -> hanya tampil teks.
+-- ============ BRAND SERVER ============
+
 Config.ServerBrand = {
     Enabled  = true,
-    Name     = 'LNGX',            -- nama server
-    Subtitle = 'ROLEPLAY',        -- teks kecil di bawah nama ('' = sembunyikan)
+    Name     = 'LNGX',             
+    Subtitle = 'ROLEPLAY',         
     Logo     = 'logo.svg',
-    LogoSize = 44,                -- px (acuan 1080p)
-    -- 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'
+    LogoSize = 44,                
     Position = 'top-right',
-    X = 24, Y = 22,               -- jarak dari tepi (px); untuk 'center' X = geser kiri/kanan
+    X = 24, Y = 22,                
 }
-
--- ============ INFO PEMAIN (ID, job, cash, bank) ============
--- Panel terpisah dari dock status. Pemain bisa menyembunyikannya di menu /hud.
--- Dengan Config.ServerBrand default (top-right, Y=22), panel ini diletakkan tepat di bawahnya (Y=96).
+ 
 Config.PlayerInfo = {
     Enabled  = true,
-    Position = 'top-right',       -- 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'
-    X = 24, Y = 96,               -- jarak dari tepi (px)
-    Currency = '$',               -- simbol uang (mis. 'Rp ')
-    Locale   = 'en-US',           -- format angka: 'en-US' = 1,234 | 'id-ID' = 1.234
-    Show = { id = true, job = true, cash = true, bank = true, black = true },   -- black = uang kotor, tampil hanya jika framework punya akun-nya
-    BlackAccount = 'black_money', -- nama akun uang kotor di ESX
-    Tick = 1500,                  -- ms, cadangan polling (perubahan uang/job juga dikirim lewat event)
+    Position = 'top-right',        
+    X = 24, Y = 96,                
+    Currency = '$',               
+    Locale   = 'en-US',           
+    Show = { id = true, job = true, cash = true, bank = true, black = true },   
+    BlackAccount = 'black_money',  
+    Tick = 1500,                   
 }
 
 -- ============ PERFORMA ============
-Config.StatusTick  = 250          -- ms, interval cek health/armor/stamina/oxygen (HUD kini hanya kirim jika ada perubahan)
-Config.VehicleTick = 100          -- ms, interval speedometer saat di kendaraan (naikkan ke 150 jika ingin lebih ringan)
+Config.StatusTick  = 250           
+Config.VehicleTick = 100           
 
 -- ============ SPEEDOMETER ============
-Config.SpeedUnit = 'kmh'          -- 'kmh' | 'mph'
-Config.ShowSpeedoAsPassenger = false -- true = speedo juga tampil untuk penumpang
--- Sumber bensin: 'auto' | 'native' | nama resource yang punya export GetFuel (mis. 'LegacyFuel', 'cdn-fuel', 'ps-fuel')
--- 'auto' = statebag (ox_fuel, dll) -> resource di FuelResources -> native GTA
+Config.SpeedUnit = 'kmh'           
+Config.ShowSpeedoAsPassenger = false  
+ 
 Config.Fuel = 'auto'
 Config.FuelStatebag = 'fuel'
 Config.FuelResources = { 'LegacyFuel', 'cdn-fuel', 'ps-fuel' }
--- Navigasi tujuan: panah arah + jarak (meter/km) ke waypoint peta (pasang waypoint di peta pause)
+  
 Config.Nav = {
     Enabled = true,
-    ArrivalRadius = 30,           -- meter, di bawah ini tampil "TIBA"
+    ArrivalRadius = 30,           
 }
--- Posisi nama lokasi (px, acuan 1080p, otomatis diskalakan mengikuti tinggi layar): DI ATAS minimap. bottom = jarak dari bawah layar (naikkan jika menimpa minimap), width = lebar
+ 
 Config.LocationPosition = {
-    square = { left = 28, bottom = 264, width = 312 },   -- width = lebar kotak (samakan dengan lebar minimap)
-    -- minimap lingkaran: style = 'arc' (teks melengkung mengelilingi sisi atas minimap) atau 'pill' (pil terpisah)
-    -- width = diameter horizontal minimap, ry = radius vertikal (tinggi minimap / 2; samakan dgn width/2 jika benar-benar bulat),
-    -- bottom = jarak TEPI ATAS minimap dari bawah layar, gap = jarak panel dari tepi minimap, span = lebar panel dalam derajat (makin besar makin lebar mengelilingi peta), overlap = (khusus 'pill') px menimpa tepi atas
+    square = { left = 28, bottom = 264, width = 312 },    
     circle = { left = 42, bottom = 314, width = 291, style = 'arc', ry = 133, gap = 18, span = 50, overlap = 20 },
 }
--- Border (bingkai) di sekeliling minimap. Posisi/ukuran (px, acuan 1080p, otomatis diskalakan) = area minimap di layar.
--- left/width mengikuti lebar layar, bottom/height mengikuti tinggi layar. Kotak = persegi panjang, lingkaran = elips (width x height).
--- Geser/pas-kan langsung di game: /mapborder left 30 | bottom 70 | width 312 | height 198 | radius 8 | thick 3 (nilai akhir tercetak di F8)
 Config.MapBorder = {
-    Enabled = true,               -- default; pemain bisa on/off di menu /hud (Border minimap)
-    Thick   = 3,                  -- px, tebal garis border (di luar area peta, tidak menutupi peta)
-    Color   = 'rgba(255,255,255,.55)',   -- warna garis (css). Contoh aksen biru: 'rgba(47,155,255,.9)'
-    Glow    = 'rgba(47,155,255,.25)',    -- cahaya tipis di luar border (nil/false = tanpa glow)
-    Shadow  = true,               -- bayangan gelap di luar agar border terlihat di latar terang
+    Enabled = true,               
+    Thick   = 3,                  
+    Color   = 'rgba(255,255,255,.55)',    
+    Glow    = 'rgba(47,155,255,.25)',    
+    Shadow  = true,                
     square  = { left = 28, bottom = 66, width = 312, height = 198, radius = 6 },
-    circle  = { left = 42, bottom = 82, width = 291, height = 244 },   -- elips (radius otomatis 50%)
+    circle  = { left = 42, bottom = 82, width = 291, height = 244 },    
 }
--- Admin HUD (/adminhud): panel tuner live untuk posisi nama jalan + border minimap (slider, tombol Salin config). Hanya preview di client sendiri.
+ 
 Config.AdminHud = {
-    Command = 'adminhud',         -- false = matikan command
-    Groups = { 'admin', 'superadmin', 'god' },   -- group admin framework (ESX group / QBCore & Qbox permission) yang boleh membuka
+    Command = 'adminhud',          
+    Groups = { 'admin', 'superadmin', 'god' },    
 }
-Config.ShowLocation = true        -- nama jalan + area (mis. Pillbox Hill) di speedometer; juga area tujuan di navigasi
--- Rute GPS di minimap
+Config.ShowLocation = true        
+
 Config.Route = {
-    -- Warna garis rute + pin waypoint: { normal, terang, gelap } masing-masing { r, g, b }. nil = bawaan GTA (ungu)
     Rgba = { { 255, 64, 160 }, { 255, 150, 205 }, { 150, 30, 95 } },   -- pink
-    HideDistance = true,      -- true = hapus teks jarak bawaan GTA di pojok minimap (mis. "0.18mi")
+    HideDistance = true,      
 }
--- Class kendaraan tanpa sabuk pengaman (ikon sabuk disembunyikan): motor, sepeda, perahu, heli, pesawat, kereta
+
 Config.NoSeatbeltClasses = { 8, 13, 14, 15, 16, 21 }
 
--- Sabuk pengaman bawaan (ikon di speedometer: hijau = dipakai, merah kedip = belum dipakai saat jalan)
+
 Config.Seatbelt = {
-    Enabled = true,           -- false = pakai script sabuk lain (baca statebag 'seatbelt' / export setSeatbelt)
-    Key = 'B',                -- tombol default (pemain bisa ubah di Settings > Key Bindings > FiveM)
+    Enabled = true,           
+    Key = 'B',               
     Command = 'lngx-seatbelt',
-    BlockExit = true,         -- tidak bisa keluar kendaraan saat sabuk dipakai
-    Sound = true,             -- suara saat pasang/lepas (html/sounds/SeatbeltOnSound.mp3 & SeatbeltOffSound.mp3)
-    Volume = 0.6,             -- volume suara sabuk (0.0 - 1.0)
-    Notify = true,            -- notifikasi saat sabuk dipasang/dilepas (sistem notif lihat Config.Notify)
+    BlockExit = true,        
+    Sound = true,             
+    Volume = 0.6,             
+    Notify = true,           
     Messages = {
         on  = 'Sabuk pengaman dipasang',
         off = 'Sabuk pengaman dilepas',
         title = 'Sabuk Pengaman',
     },
-    Eject = true,             -- tanpa sabuk, tabrakan keras = terlempar dari kendaraan
-    EjectSpeed = 70,          -- km/h, kecepatan minimal sebelum tabrakan
-    EjectDrop = 40,           -- km/h, penurunan kecepatan mendadak (per cek) yang dianggap tabrakan
-    EjectDamage = 25,         -- darah berkurang saat terlempar
+    Eject = true,            
+    EjectSpeed = 70,         
+    EjectDrop = 40,           
+    EjectDamage = 25,         
 }
 
--- Cruise control (ikon di speedometer: hijau = aktif, redup = mati). Tekan tombol saat melaju untuk mengunci kecepatan saat ini.
--- Batal otomatis saat: rem / rem tangan ditekan, mesin mati, keluar kendaraan, mundur, atau menabrak (kecepatan anjlok).
+
 Config.Cruise = {
-    Enabled = true,           -- false = fitur & ikon cruise dimatikan
-    Key = 'CAPITAL',          -- tombol default (CAPITAL = Caps Lock; pemain bisa ubah di Settings > Key Bindings > FiveM)
+    Enabled = true,            
+    Key = 'CAPITAL',           
     Command = 'lngx-cruise',
-    MinSpeed = 30,            -- km/h, kecepatan minimal agar cruise bisa diaktifkan
-    CrashDrop = 20,           -- km/h, jika kecepatan turun sebanyak ini dari target = batal (nabrak / tanjakan curam)
-    BlockClasses = { 13, 14, 15, 16, 21 },  -- class tanpa cruise (ikon disembunyikan): sepeda, perahu, heli, pesawat, kereta
-    Sound = true,             -- suara klik saat aktif/nonaktif
-    Notify = true,            -- notifikasi saat cruise aktif/nonaktif (sistem notif lihat Config.Notify)
+    MinSpeed = 30,             
+    CrashDrop = 20,           
+    BlockClasses = { 13, 14, 15, 16, 21 },  
+    Sound = true,            
+    Notify = true,            
     Messages = {
         title = 'Cruise Control',
         on  = 'Cruise control aktif',
@@ -155,13 +135,11 @@ Config.Cruise = {
     },
 }
 
--- Sein otomatis: saat waypoint/rute GPS aktif dan ada belokan di depan, lampu sein menyala sendiri (kiri/kanan) lalu mati setelah belok.
--- Hanya untuk pengemudi. Pemain bisa mematikannya di menu /hud. Jarak nyala = kecepatan x Seconds (dibatasi Min..Max meter).
 Config.AutoSignal = {
-    Enabled = true,           -- false = fitur dimatikan total
-    Tick = 200,               -- ms, interval cek rute saat berkendara
-    Seconds = 5.0,            -- sein menyala kira-kira sekian detik sebelum belokan
-    MinDistance = 40.0,       -- meter, jarak minimal sebelum belokan (kecepatan rendah)
-    MaxDistance = 180.0,      -- meter, jarak maksimal sebelum belokan (kecepatan tinggi)
-    BlockClasses = { 13, 14, 15, 16, 21 },  -- class tanpa sein: sepeda, perahu, heli, pesawat, kereta
+    Enabled = true,            
+    Tick = 200,                
+    Seconds = 5.0,            
+    MinDistance = 40.0,       
+    MaxDistance = 180.0,       
+    BlockClasses = { 13, 14, 15, 16, 21 },   
 }
