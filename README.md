@@ -25,7 +25,7 @@ A modern, customizable, and lightweight HUD system designed for an immersive gam
 
 | Command | Keybind | Description |
 | :--- | :---: | :--- |
-| `/hud` | <kbd>F7</kbd> | Open HUD settings menu |
+| `/hud` | <kbd> - </kbd> | Open HUD settings menu |
 | `/vehmenu` | <kbd> - </kbd> | Open vehicle control menu |
 | `/seatbelt` | <kbd>B</kbd> | Toggle vehicle seatbelt |
 | `/cruise` | <kbd>CAPSLOCK</kbd> | Limit Km/h  |
